@@ -1,0 +1,5 @@
+﻿cl : command line  warning D9025: overriding '/sdl' with '/GS-'
+  main.c
+main.obj : error LNK2001: unresolved external symbol free
+main.obj : error LNK2001: unresolved external symbol malloc
+C:\Users\Van den Brink\OneDrive - Rootsec\Desktop\DdLoader - Improved\x64\Release\DdLoader.exe : fatal error LNK1120: 2 unresolved externals
