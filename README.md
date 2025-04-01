@@ -9,7 +9,9 @@ Evasive shellcode loader which provides a means to bypass EDR solutions.
 
 ## Demo  
 Bypassing a commercially graded EDR with DdLoader using a custom Malleable C2 profile, UDRL, Sleepmask, and Artifact Kit:  
+
 ![](images/image1.png)
+
 ![](images/image2.png)
 ## References
 - [ShellcodeFluctuation by mgeeky](https://github.com/mgeeky/ShellcodeFluctuation)
