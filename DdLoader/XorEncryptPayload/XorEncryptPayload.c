@@ -15,7 +15,7 @@ VOID XorByiKeys(PBYTE buf, SIZE_T size, BYTE bKey) {
 }
 
 int main() {
-    const char* input_filename = "calc.bin";
+    const char* input_filename = "beacon.bin";
     const char* output_filename = "PAYLOAD.bin";
 
     FILE* infile = fopen(input_filename, "rb");

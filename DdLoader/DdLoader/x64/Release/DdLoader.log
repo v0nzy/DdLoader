@@ -1,5 +1,7 @@
 ﻿cl : command line  warning D9025: overriding '/sdl' with '/GS-'
-  main.c
-main.obj : error LNK2001: unresolved external symbol free
-main.obj : error LNK2001: unresolved external symbol malloc
-C:\Users\Van den Brink\OneDrive - Rootsec\Desktop\DdLoader - Improved\x64\Release\DdLoader.exe : fatal error LNK1120: 2 unresolved externals
+  helper.c
+C:\Users\Van den Brink\OneDrive - Rootsec\Desktop\DdLoader\DdLoader\DdLoader\helper.c(96,25): warning C4267: '=': conversion from 'size_t' to 'BYTE', possible loss of data
+C:\Users\Van den Brink\OneDrive - Rootsec\Desktop\DdLoader\DdLoader\DdLoader\helper.c(120,77): warning C4022: 'VirtualProtect': pointer mismatch for actual parameter 1
+C:\Users\Van den Brink\OneDrive - Rootsec\Desktop\DdLoader\DdLoader\DdLoader\helper.c(168,1): warning C4715: 'FluctuateShellcode': not all control paths return a value
+  LINK : /LTCG specified but no code generation required; remove /LTCG from the link command line to improve linker performance
+  DdLoader.vcxproj -> C:\Users\Van den Brink\OneDrive - Rootsec\Desktop\DdLoader\DdLoader\x64\Release\DdLoader.exe

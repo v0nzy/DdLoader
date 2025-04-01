@@ -24,13 +24,11 @@
         SetConsoleMode(hIn, mode);                \
     } while(0)
 
-// memcpy CRT replacement
-void* MoveMem(void* dest, const void* src, unsigned int count);
 
 // --------------------  Definitions -------------------- 
 BOOL FluctuateShellcode(IN PBYTE pShellcodeBuffer, IN DWORD dwSize);
 LPVOID GetShellcodeBaseAddress(HANDLE hProc, DWORD szPage, DWORD szAllocGran, DWORD cVmResv);
-void DelayShowProgress(double percentage, int step, int msStepDelay, int time_needed, int vmbase);
 unsigned char* ReadShellcode(const char* fileName, DWORD * dwSize);
+void* MoveMem(void* dest, const void* src, unsigned int count);
 
 

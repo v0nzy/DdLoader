@@ -1,7 +1,7 @@
 ﻿  main.c
-C:\Users\Jarno\OneDrive - Rootsec\Desktop\DdLoader - Improved\DdLoader\main.c(98,21): warning C4244: '+=': conversion from 'SIZE_T' to 'DWORD', possible loss of data
-C:\Users\Jarno\OneDrive - Rootsec\Desktop\DdLoader - Improved\DdLoader\main.c(34,62): warning C4244: 'initializing': conversion from 'SIZE_T' to 'DWORD', possible loss of data
-C:\Users\Jarno\OneDrive - Rootsec\Desktop\DdLoader - Improved\DdLoader\main.c(35,47): warning C4244: 'initializing': conversion from 'SIZE_T' to 'DWORD', possible loss of data
-C:\Users\Jarno\OneDrive - Rootsec\Desktop\DdLoader - Improved\DdLoader\main.c(51,82): warning C4244: 'initializing': conversion from 'SIZE_T' to 'DWORD', possible loss of data
-C:\Users\Jarno\OneDrive - Rootsec\Desktop\DdLoader - Improved\DdLoader\main.c(71,54): warning C4244: 'initializing': conversion from 'SIZE_T' to 'DWORD', possible loss of data
-  DdLoader.vcxproj -> C:\Users\Jarno\OneDrive - Rootsec\Desktop\DdLoader - Improved\x64\Debug\DdLoader.exe
+C:\Users\Van den Brink\OneDrive - Rootsec\Desktop\DdLoader\DdLoader\DdLoader\main.c(98,21): warning C4244: '+=': conversion from 'SIZE_T' to 'DWORD', possible loss of data
+C:\Users\Van den Brink\OneDrive - Rootsec\Desktop\DdLoader\DdLoader\DdLoader\main.c(34,62): warning C4244: 'initializing': conversion from 'SIZE_T' to 'DWORD', possible loss of data
+C:\Users\Van den Brink\OneDrive - Rootsec\Desktop\DdLoader\DdLoader\DdLoader\main.c(35,47): warning C4244: 'initializing': conversion from 'SIZE_T' to 'DWORD', possible loss of data
+C:\Users\Van den Brink\OneDrive - Rootsec\Desktop\DdLoader\DdLoader\DdLoader\main.c(51,82): warning C4244: 'initializing': conversion from 'SIZE_T' to 'DWORD', possible loss of data
+C:\Users\Van den Brink\OneDrive - Rootsec\Desktop\DdLoader\DdLoader\DdLoader\main.c(71,54): warning C4244: 'initializing': conversion from 'SIZE_T' to 'DWORD', possible loss of data
+  DdLoader.vcxproj -> C:\Users\Van den Brink\OneDrive - Rootsec\Desktop\DdLoader\DdLoader\x64\Debug\DdLoader.exe
